@@ -1,17 +1,18 @@
 class CommentsController < ApplicationController
+  before_action :current_post
   before_action :current_comment, only: [:edit, :update, :destroy]
 
   def new
-    @comment = Comment.new
+    @comment = @post.comments.build
   end
 
   def create
-    comment = Comment.create(post_params)
+    @comment = @post.comments.create(comment_params)
+    puts @comment.post_id
     redirect_to post_path(@post)
   end
   
   def edit
-    puts 
   end
 
   def update
@@ -29,12 +30,16 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:author, :content, :post_id)
+    params.require(:comment).permit(:author, :content)
+  end
+
+  def current_post
+    @post = Post.find(params[:post_id])
   end
 
   def current_comment
     puts params.keys
-    @post = Post.find(params[:post_id])
+    # @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
   end
 end
