@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_21_115847) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_25_135755) do
   create_table "comments", force: :cascade do |t|
     t.integer "post_id", null: false
     t.string "author"
-    t.string "content"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_115847) do
 
   create_table "posts", force: :cascade do |t|
     t.string "author"
-    t.string "content"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
