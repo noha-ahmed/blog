@@ -1,0 +1,15 @@
+<h1>Posts</h1>
+<div class="list-group" id="posts">
+ 
+  <% @posts.each do |post| %>
+    <div class="card mt-2">
+    <div class="card-body">
+      <h5 class="card-title"> <%= post.author %> </h5>
+      <p class="card-text"> <%= post.content %> </p>
+      <a href="#" class="card-link" > <%= link_to "view", post %> </a>
+    </div>
+    
+  </div>
+   
+  <% end %>
+</div>
