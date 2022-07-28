@@ -1,15 +1,28 @@
+
+
+<div class="container m-4">
+
 <h1>Posts</h1>
+<div class = "container m-2" >
 <div class="list-group" id="posts">
  
   <% @posts.each do |post| %>
-    <div class="card mt-2">
+    <div class="card mt-2 border-dark">
     <div class="card-body">
       <h5 class="card-title"> <%= post.author %> </h5>
       <p class="card-text"> <%= post.content %> </p>
-      <a href="#" class="card-link" > <%= link_to "view", post %> </a>
-    </div>
     
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <%= link_to "view", post, class: "btn btn-outline-dark"  %> 
+    </div>
+    </div>
   </div>
-   
   <% end %>
+
+  <div class="d-grid gap-2 col-4 mx-auto m-2">
+   <%= link_to "New Post", new_post_path , class: "btn btn-dark mx-auto"  %> 
+   </div>
+
+</div>
+
 </div>
