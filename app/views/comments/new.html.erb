@@ -9,13 +9,11 @@
   <div class="card-body">
 
     <div class="mb-3">
-      <h5><%= f.label :author, { class: "form-label"} %></h5>
-      <%= f.text_field :author, { class: "form-control", placeholder: "author" } %>
+      <h5><%= current_user.first_name + " " + current_user.last_name %></h5>
     </div>
 
     <div class="mb-3">
-      <h5><%= f.label :content, { class: "form-label"} %></h5>
-      <%= f.text_area :content, { class: "form-control", placeholder: "content" } %>
+      <%= f.text_area :content, { class: "form-control", placeholder: "Leave your comment.." } %>
     </div>
 
    
@@ -23,6 +21,8 @@
      <%= link_to "Back", post_path(@post), class: "btn btn-link"%>
      <%= f.submit "Submit", class: "btn btn-dark" %>
     </div>
+
+    <%= f.number_field :user_id, { class: "form-control", value: current_user.id, id: :comment_user_id, type: :hidden } %>
     
 
   </div>
